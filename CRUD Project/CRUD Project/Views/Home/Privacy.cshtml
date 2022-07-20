@@ -1,0 +1,25 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+
+@if (SignInManager.IsSignedIn(User))
+{
+    Layout = "_Layout";
+}
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <h1 class="display-4">@ViewData["Title"]</h1>
+
+
+    <p>Contact us on the email below.</p>
+    <email mail-to="support.of.this.website"></email>
+}
+else
+{
+    <p>Please log in to get more informations.</p>
+}

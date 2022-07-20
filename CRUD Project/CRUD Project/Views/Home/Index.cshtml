@@ -1,0 +1,52 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@if (User.IsInRole("Administrator"))
+{
+    Layout = "_LayoutAdmin";
+}
+
+
+
+@if (!SignInManager.IsSignedIn(User))
+{
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p>Log in to see more informations!</p>
+    </div>
+}
+else
+{
+    <div class="text-center">
+        <h1 class="display-4"><welcome-tag-helper name=@User.Identity.Name></welcome-tag-helper></h1>
+    </div>
+    
+    <ul class="list-group">
+        <li class="list-group-item active">Modele: 35%</li>
+        <li class="list-group-item">minimum 2 tabele z relacją jeden-do-wiele i odpowiednią implementacją więzów integralności danych: 10%</li>
+        <li class="list-group-item">walidacja danych 15%</li>
+        <li class="list-group-item">zastosowanie atrybutów modelu, wspomagających generowanie pól w widokach: 10%</li>
+    </ul>
+    
+    <ul class="list-group">
+        <li class="list-group-item active">Kontrolery: 30%</li>
+        <li class="list-group-item">możliwość definiowania w programie użytkowników i przypisywania ich do zdefiniowanych ról oraz powiązanie
+            uprawnień zalogowanych userów z akcjami w kontrolerach: 10%</li>
+        <li class="list-group-item">wykorzystanie LINQ w akcjach kontrolerów: 10%</li>
+        <li class="list-group-item">przygotowanie testów jednostkowych akcji w kontrolerach: 10%</li>
+    </ul>
+    
+    <ul class="list-group">
+        <li class="list-group-item active">Widoki: 35%</li>
+        <li class="list-group-item">dwa widoki napisane ręcznie, nie powinny dotyczyć widoków CRUD: 5%</li>
+        <li class="list-group-item">widok częściowy, pozwalający na częściowe odświeżanie strony (zwrócić uwagę na komunikację widoku częściowego z widokiem podstawowym): 10%</li>
+        <li class="list-group-item">zastosowanie podstawowych helperów oraz definicja dwóch własnych (HTML | Tag) helperów o nietrywialnej funkcjonalności: 10%</li>
+        <li class="list-group-item">zastosowanie dwóch własnych layoutów stron: 10%</li>
+    </ul>
+    
+}
